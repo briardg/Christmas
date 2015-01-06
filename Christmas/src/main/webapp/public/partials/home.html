@@ -1,0 +1,33 @@
+<div ng-controller="presentCtrl">
+    <h1>Presents:</h1>
+    <p>List of presents by users except yourself !</p>
+    
+    <div ng-repeat="user in presentsByUsers">
+        <h1>{{user.firstName}} {{user.lastName}}</h1>
+        <table ng-if="user.presents.length>0">
+            <thead>
+                <tr><td>Name</td><td>Description</td><td>Price</td><td>Buyer(s)</td><td>Buy it?</td></tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="present in user.presents">
+                    <td>{{present.name}}</td>
+                    <td>{{present.description}}</td>
+                    <td>{{present.price}}</td>
+                    <td>
+                        <span ng-repeat="buyer in present.buyers">{{buyer.firstName}} {{buyer.lastName}}</span><br/>
+                    </td>
+                    <td ng-if="present.percentage==100">Complete</td>
+                    <td ng-if="present.percentage<100">
+                        <form ng-submit="buyPresent(present.id)">
+                            <select name="percentage" ng-model="percentage[present.id]" 
+                                    ng-options="o as o+'%' for o in dropDownListPercentageArray(present.percentage)">    
+                            </select>
+                            <input class="btn-primary" type="submit" value="Buy it">
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p ng-if="!(user.presents.length>0)">Empty</p>
+    </div>
+</div>

@@ -1,0 +1,20 @@
+
+    <h1>My list of presents:</h1>
+    <table ng-if="presents.length>0">
+            <thead>
+                <tr><td>Name</td><td>Description</td><td>Price</td><td>Buyer(s)</td><td>Edit it?</td><td>Delete it?</td></tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="present in presents">
+                    <td>{{present.name}}</td>
+                    <td>{{present.description}}</td>
+                    <td>{{present.price}}</td>
+                    <td>
+                        <span ng-repeat="buyer in present.buyers">{{user.firstName}} {{user.lastName}}</span><br/>
+                    </td>
+                    <td><a class="btn btn-primary" ng-click="edit(present.id)" >Edit</a></td>
+                    <td><a class="btn btn-primary btn-delete-item" ng-click="delete($index,present.id)" >Delete</a></td>
+                </tr>
+            </tbody>
+        </table>
+        <p ng-if="!(presents.length>0)">Empty</p>

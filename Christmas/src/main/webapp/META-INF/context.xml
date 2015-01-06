@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context antiJARLocking="true" path="">
+    <Resource name="jdbc/christmas"
+          auth="Container"
+          type="javax.sql.DataSource"
+          username="gautier"
+          password="christmas"
+          driverClassName="com.mysql.jdbc.Driver"
+          url="jdbc:mysql://localhost:3306/christmas"
+          maxActive="15"
+          maxIdle="3"
+          removeAbandoned="true"
+          removeAbandonedTimeout="60"/>
+</Context>
